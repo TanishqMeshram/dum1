@@ -8,12 +8,14 @@ from spellchecker import SpellChecker
 from nltk.tokenize import word_tokenize
 from PyPDF2 import PdfReader
 from docx import Document
+from flask_cors import CORS
 
 logging.basicConfig(level=logging.DEBUG)
 
 nltk.download('punkt')
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all domains on all routes
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
@@ -25,9 +27,10 @@ common_names_and_terms = set([
     "Bharat", "Sahil", "Tanishq", "Python", "Java", "SQL", "HTML", "CSS", "JavaScript", "AWS", "Azure", "GCP",
     "TensorFlow", "PyTorch", "NumPy", "Pandas", "scikit-learn", "GitHub", "Linux", "Docker", "Kubernetes", "Vivek",
     "Figma", "CMS", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", 
-    "November", "December", "Nagpur", "Wordpress","Internpe", "Rupesh", "Ramesh", "Suresh", "Anshun", "Rutuj", "Taklikar",
-    "Rajkumar", "Rao", "Bahadure", "Bhardwaj", "Bansod","Meshram", "Dudhani", "Mohammad", "Ansari", "Kale", "Nasre", 
-    "Kharapkar", "Patankar"])
+    "November", "December", "Nagpur", "Wordpress", "Internpe", "Rupesh", "Ramesh", "Suresh", "Anshun", "Rutuj", "Taklikar",
+    "Rajkumar", "Rao", "Bahadure", "Bhardwaj", "Bansod", "Meshram", "Dudhani", "Mohammad", "Ansari", "Kale", "Nasre", 
+    "Kharapkar", "Patankar"
+])
 
 def extract_text_from_pdf(file_path):
     text = ""
@@ -113,4 +116,3 @@ def upload_file():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
-
