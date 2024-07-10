@@ -61,7 +61,7 @@
                 resultDiv.innerHTML = `<div class="alert alert-danger">${result.error}</div>`;
             } else {
                 if (result.mistakes.length > 0) {
-                    resultDiv.innerHTML = '<h3>Top 3 Mistakes:</h3><ul class="list-group">';
+                    resultDiv.innerHTML = '<h3>Top Mistakes:</h3><ul class="list-group">';
                     result.mistakes.forEach(mistake => {
                         resultDiv.innerHTML += `<li class="list-group-item">${mistake}</li>`;
                     });
