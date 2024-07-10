@@ -3,5 +3,4 @@
     "routes":[
         {"src": "/(.*)","dest":"app.py"}
     ]
-    "debug": true
 }
